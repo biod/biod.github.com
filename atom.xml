@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[BioD]]></title>
+  <link href="http://biod.github.io/atom.xml" rel="self"/>
+  <link href="http://biod.github.io/"/>
+  <updated>2018-12-24T14:58:14+05:30</updated>
+  <id>http://biod.github.io/</id>
+  <author>
+    <name><![CDATA[BioD]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+</feed>

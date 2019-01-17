@@ -3,6 +3,7 @@ layout: page
 comments: false
 sharing: true
 footer: true
+
 ---
 
 <h4>Installing a D compiler</h4>
@@ -111,11 +112,63 @@ Reference position: 155
 
 <li>
 <h5>Reading multiple BAM files</h5>
-</li>
+``` Reading multiple BAM files
+// 
+import bio.std.hts.bam.multireader;
+import bio.std.hts.bam.read : compareCoordinates;
+import bion.std.hts.bam.pileup;
 
-<li>
-<h5>Making a pileup</h5>
-</li>
+import std.algorithm;
+import std.conv;
+import std.stdio;
+
+void main(){
+ // if the bam files can be merger, they can be transversed simultinously. :)
+ auto bam = new MultiBamReader(["../test/data/illu_20_chunk.bam", "../test/data/ion_20_chuck.bam"]);
+ auto pileup = makePileup(bam.reads,true,32_000_083,32_000_089);
+ 
+ foreach(column;pileup)
+    writeln("Column position: ", column.position);
+    writeln("   Ref.base: ", column.reference_base);
+    writeln("   Coverage: ", column.coverage);
+ }
+
+}
+```
+Expected output 
+
+```
+Column position: 32000083
+    Ref.base: G
+    Coverage: 23
+    GGGGGGGGGGGGGGGGGGGGGGG
+ Column position: 32000084
+     Ref.base: C
+     Coverage: 23
+     CCCCCCCCCCCCCCCCCCCCCCC
+ Column position: 32000085
+     Ref.base: C
+     Coverage: 23
+     CCCCCCCCCCCCCCCCCCCCCCC
+  Column position: 32000086
+     Ref.base: C
+     Coverage: 24
+     CCCCCCCCCCCCGCCCCCCCCCCC
+  Column position: 32000087
+     Ref.base: C
+     Coverage: 24
+     CCCCCCCCCCCCCCCCCCCCCCCC
+  Column position: 32000088
+     Ref.base: T
+     Coverage: 24
+     TTTTTTTTTTTTTTTTTTTTTTTT
+
+```
+  </li>
+
+ <li>
+<p>Working with pileup</p>
+ </li>
 
 </ol>
 

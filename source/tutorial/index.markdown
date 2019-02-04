@@ -19,7 +19,7 @@ You can use your favourite text editor to create a file hello.d, type the follow
 import std.stdio;
 
 void main() {
-  writeln("I am ready to use BioD!");
+    writeln("I am ready to use BioD!");
 }
 
 ```
@@ -63,29 +63,28 @@ import bio.std.hts.bam.pileup;
 
 void main() {
 
- auto bam = new BamReader("my_file.bam");
- auto reads = bam["chr1"][150 .. 160];
- auto pileup = makePileup(reads,false,155, 158);
+    auto bam = new BamReader("my_file.bam");
+    auto reads = bam["chr1"][150 .. 160];
+    auto pileup = makePileup(reads,false,155, 158);
 
- foreach (column; pileup) {
+    foreach (column; pileup) {
         writeln("Reference position: ", column.position);
         writeln("    Coverage: ", column.coverage);
         writeln("    Reads:");
 
- foreach (read; column.reads) {
-    writefln("%30s\t%s\t%.2d\t%s\t%2s/%2s\t%2s/%2s\t%10s\t%s %s", 
-      read.name, 
-      read.current_base,
-      read.current_base_quality,
-      read.cigar_operation,
-      read.cigar_operation_offset + 1, read.cigar_operation.length,
-      read.query_offset + 1, read.sequence.length,
-      read.cigarString(),
-      read.cigar_before, read.cigar_after);
-       }
-     }
-  }
-
+        foreach (read; column.reads) {
+            writefln("%30s\t%s\t%.2d\t%s\t%2s/%2s\t%2s/%2s\t%10s\t%s %s", 
+            read.name, 
+            read.current_base,
+            read.current_base_quality,
+            read.cigar_operation,
+            read.cigar_operation_offset + 1, read.cigar_operation.length,
+            read.query_offset + 1, read.sequence.length,
+            read.cigarString(),
+            read.cigar_before, read.cigar_after);
+        }
+    }
+}
 ```
 Example output
 

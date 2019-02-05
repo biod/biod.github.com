@@ -18,11 +18,18 @@ Artem Tarasov, Albert J. Vilella, Edwin Cuppen, Isaac J. Nijman, Pjotr Prins; <a
 </p>
 </li>
 <li>
+
 <h3>Faster-LMM-D</h3>
 <p>
 <a href="https://github.com/genetics-statistics/faster_lmm_d" target="_blank">Faster_lmm_d</a> is a lightweight linear mixed-model solver for genome-wide association studies (GWAS).
 </p>
 </li>
 
+<li>
+<h3>Multiple QTL Mapping</h3>
+<p>
+<a href="https://github.com/biod/MQM" target="_blank">Multiple QTL Mapping </a> provides a sensitive approach for mapping quantititive trait loci (QTL) in experimental populations.
+</p>
+</li>
 </ul>
 

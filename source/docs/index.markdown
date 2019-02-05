@@ -9,4 +9,4 @@ footer: true
 
 BioD is under development and the API may change often. 
 
-<p>Current API</p>
+<p>Browse the API</p>

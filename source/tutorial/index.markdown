@@ -111,8 +111,10 @@ Reference position: 155
 </li>
 
 <li>
+
 <h5>Reading multiple BAM files</h5>
-``` Reading multiple BAM files
+
+```
 // 
 import bio.std.hts.bam.multireader;
 import bio.std.hts.bam.read : compareCoordinates;

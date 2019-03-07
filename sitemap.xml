@@ -1,27 +1,27 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd" xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>http://biod.github.io/blog/</loc>
-  </url>
-  <url>
     <loc>http://biod.github.io/blog/archives/</loc>
   </url>
   <url>
     <loc>http://biod.github.io/</loc>
   </url>
   <url>
-    <loc>http://biod.github.io/resources/</loc>
-  </url>
-  <url>
-    <loc>http://biod.github.io/publications/</loc>
+    <loc>http://biod.github.io/blog/</loc>
   </url>
   <url>
     <loc>http://biod.github.io/docs/</loc>
   </url>
   <url>
+    <loc>http://biod.github.io/projects/</loc>
+  </url>
+  <url>
     <loc>http://biod.github.io/tutorial/</loc>
   </url>
   <url>
-    <loc>http://biod.github.io/projects/</loc>
+    <loc>http://biod.github.io/publications/</loc>
+  </url>
+  <url>
+    <loc>http://biod.github.io/resources/</loc>
   </url>
 </urlset>

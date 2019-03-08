@@ -249,7 +249,7 @@ Example output
 
 <h5>Reading multiple BAM files</h5>
 
-<figure class='code'><figcaption><span>example output for a single position</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<figure class='code'><figcaption><span>reading multiple bam files</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
 <span class='line-number'>3</span>
 <span class='line-number'>4</span>
@@ -269,32 +269,30 @@ Example output
 <span class='line-number'>18</span>
 <span class='line-number'>19</span>
 <span class='line-number'>20</span>
-<span class='line-number'>21</span>
-</pre></td><td class='code'><pre><code class='sh'><span class='line'>//
-</span><span class='line'>import bio.std.hts.bam.multireader<span class="p">;</span>
-</span><span class='line'>import bio.std.hts.bam.read : compareCoordinates<span class="p">;</span>
-</span><span class='line'>import bion.std.hts.bam.pileup<span class="p">;</span>
+</pre></td><td class='code'><pre><code class='D'><span class='line'><span class="k">import</span> <span class="n">bio</span><span class="p">.</span><span class="n">std</span><span class="p">.</span><span class="n">hts</span><span class="p">.</span><span class="n">bam</span><span class="p">.</span><span class="n">multireader</span><span class="p">;</span>
+</span><span class='line'><span class="k">import</span> <span class="n">bio</span><span class="p">.</span><span class="n">std</span><span class="p">.</span><span class="n">hts</span><span class="p">.</span><span class="n">bam</span><span class="p">.</span><span class="n">read</span> <span class="p">:</span> <span class="n">compareCoordinates</span><span class="p">;</span>
+</span><span class='line'><span class="k">import</span> <span class="n">bion</span><span class="p">.</span><span class="n">std</span><span class="p">.</span><span class="n">hts</span><span class="p">.</span><span class="n">bam</span><span class="p">.</span><span class="n">pileup</span><span class="p">;</span>
 </span><span class='line'>
-</span><span class='line'>import std.algorithm<span class="p">;</span>
-</span><span class='line'>import std.conv<span class="p">;</span>
-</span><span class='line'>import std.stdio<span class="p">;</span>
+</span><span class='line'><span class="k">import</span> <span class="n">std</span><span class="p">.</span><span class="n">algorithm</span><span class="p">;</span>
+</span><span class='line'><span class="k">import</span> <span class="n">std</span><span class="p">.</span><span class="n">conv</span><span class="p">;</span>
+</span><span class='line'><span class="k">import</span> <span class="n">std</span><span class="p">.</span><span class="n">stdio</span><span class="p">;</span>
 </span><span class='line'>
-</span><span class='line'>void main<span class="o">(){</span>
-</span><span class='line'> // <span class="k">if</span> the bam files can be merger, they can be transversed simultinously. :<span class="o">)</span>
-</span><span class='line'> auto <span class="nv">bam</span> <span class="o">=</span> new MultiBamReader<span class="o">([</span><span class="s2">&quot;../test/data/illu_20_chunk.bam&quot;</span>, <span class="s2">&quot;../test/data/ion_20_chuck.bam&quot;</span><span class="o">])</span><span class="p">;</span>
-</span><span class='line'> auto <span class="nv">pileup</span> <span class="o">=</span> makePileup<span class="o">(</span>bam.reads,true,32_000_083,32_000_089<span class="o">)</span><span class="p">;</span>
+</span><span class='line'><span class="kt">void</span> <span class="n">main</span><span class="p">(){</span>
+</span><span class='line'> <span class="c1">// if the bam files can be merged, they can be transversed simultinously</span>
+</span><span class='line'> <span class="k">auto</span> <span class="n">bam</span> <span class="p">=</span> <span class="k">new</span> <span class="n">MultiBamReader</span><span class="p">([</span><span class="s">&quot;../test/data/illu_20_chunk.bam&quot;</span><span class="p">,</span> <span class="s">&quot;../test/data/ion_20_chuck.bam&quot;</span><span class="p">]);</span>
+</span><span class='line'> <span class="k">auto</span> <span class="n">pileup</span> <span class="p">=</span> <span class="n">makePileup</span><span class="p">(</span><span class="n">bam</span><span class="p">.</span><span class="n">reads</span><span class="p">,</span><span class="kc">true</span><span class="p">,</span><span class="mi">32_000_083</span><span class="p">,</span><span class="mi">32_000_089</span><span class="p">);</span>
 </span><span class='line'>
-</span><span class='line'> foreach<span class="o">(</span>column<span class="p">;</span>pileup<span class="o">)</span>
-</span><span class='line'>    writeln<span class="o">(</span><span class="s2">&quot;Column position: &quot;</span>, column.position<span class="o">)</span><span class="p">;</span>
-</span><span class='line'>    writeln<span class="o">(</span><span class="s2">&quot;   Ref.base: &quot;</span>, column.reference_base<span class="o">)</span><span class="p">;</span>
-</span><span class='line'>    writeln<span class="o">(</span><span class="s2">&quot;   Coverage: &quot;</span>, column.coverage<span class="o">)</span><span class="p">;</span>
-</span><span class='line'> <span class="o">}</span>
+</span><span class='line'> <span class="k">foreach</span><span class="p">(</span><span class="n">column</span><span class="p">;</span><span class="n">pileup</span><span class="p">)</span>
+</span><span class='line'>    <span class="n">writeln</span><span class="p">(</span><span class="s">&quot;Column position: &quot;</span><span class="p">,</span> <span class="n">column</span><span class="p">.</span><span class="n">position</span><span class="p">);</span>
+</span><span class='line'>    <span class="n">writeln</span><span class="p">(</span><span class="s">&quot;   Ref.base: &quot;</span><span class="p">,</span> <span class="n">column</span><span class="p">.</span><span class="n">reference_base</span><span class="p">);</span>
+</span><span class='line'>    <span class="n">writeln</span><span class="p">(</span><span class="s">&quot;   Coverage: &quot;</span><span class="p">,</span> <span class="n">column</span><span class="p">.</span><span class="n">coverage</span><span class="p">);</span>
+</span><span class='line'> <span class="p">}</span>
 </span><span class='line'>
-</span><span class='line'><span class="o">}</span>
+</span><span class='line'><span class="p">}</span>
 </span></code></pre></td></tr></table></div></figure>
 Expected output 
 
-<figure class='code'><figcaption><span>example output for a single position</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
 <span class='line-number'>3</span>
 <span class='line-number'>4</span>
@@ -312,42 +310,26 @@ Expected output
 <span class='line-number'>16</span>
 <span class='line-number'>17</span>
 <span class='line-number'>18</span>
-<span class='line-number'>19</span>
-<span class='line-number'>20</span>
-<span class='line-number'>21</span>
-<span class='line-number'>22</span>
-<span class='line-number'>23</span>
-<span class='line-number'>24</span>
 </pre></td><td class='code'><pre><code class='sh'><span class='line'>Column position: 32000083
 </span><span class='line'>    Ref.base: G
 </span><span class='line'>    Coverage: 23
-</span><span class='line'>    GGGGGGGGGGGGGGGGGGGGGGG
 </span><span class='line'> Column position: 32000084
 </span><span class='line'>     Ref.base: C
 </span><span class='line'>     Coverage: 23
-</span><span class='line'>     CCCCCCCCCCCCCCCCCCCCCCC
 </span><span class='line'> Column position: 32000085
 </span><span class='line'>     Ref.base: C
 </span><span class='line'>     Coverage: 23
-</span><span class='line'>     CCCCCCCCCCCCCCCCCCCCCCC
 </span><span class='line'>  Column position: 32000086
 </span><span class='line'>     Ref.base: C
 </span><span class='line'>     Coverage: 24
-</span><span class='line'>     CCCCCCCCCCCCGCCCCCCCCCCC
 </span><span class='line'>  Column position: 32000087
 </span><span class='line'>     Ref.base: C
 </span><span class='line'>     Coverage: 24
-</span><span class='line'>     CCCCCCCCCCCCCCCCCCCCCCCC
 </span><span class='line'>  Column position: 32000088
 </span><span class='line'>     Ref.base: T
 </span><span class='line'>     Coverage: 24
-</span><span class='line'>     TTTTTTTTTTTTTTTTTTTTTTTT
 </span></code></pre></td></tr></table></div></figure>
   </li>
-
- <li>
-<p>Working with pileup</p>
- </li>
 
 </ol>
 

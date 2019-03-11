@@ -152,10 +152,15 @@ dmd
 <h4>Examples of using BioD</h4>
 
 
+<p>BioD is very efficient in manipulating BAM files(The compressed version of SAM files) and used to represet aligned sequences. A BAM file contains a header section and an alignment section.Header contain information about the file such as Sample name, length, and alignment method. The alignment section contains information bout the read name, read sequence, read quality, the alignment information and some custom tags.</p>
+
 <ol>
 <li>
-<h5>Reading a BAM file</h5>
 
+<h5>Reading a BAM file</h5>
+<p>We can use the BioD library to read a BAM file. This example reads a BAM file and performs a query 
+for specific columns. We create a BAM object and retrieve information about specific reads spanning a region. We then create a pileup and iterate over this pileup. 
+</p>
 <figure class='code'><figcaption><span>Reading a BAM file </span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
 <span class='line-number'>3</span>
@@ -215,7 +220,7 @@ dmd
 </span><span class='line'>    <span class="p">}</span>
 </span><span class='line'><span class="p">}</span>
 </span></code></pre></td></tr></table></div></figure>
-Example output
+We get this information from one of the positions.
 
 <figure class='code'><figcaption><span>example output for a single position</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
@@ -252,6 +257,8 @@ Example output
 <li>
 
 <h5>Reading multiple BAM files</h5>
+<p> We can also read information from multiple bam files! 
+</p>
 
 <figure class='code'><figcaption><span>reading multiple bam files</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
